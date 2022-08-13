@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+:root{
+  --clr-primary: #0075FF;
+  --clr-light-text: #93B0C8;
+  --clr-background: #e6f2fc;
+
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: Quicksand, sans-serif;
+}
+
+a {
+  all: unset;
+}
+
+input {
+  border: none; /* Removes the default border */
+}
+
+input:focus {
+  outline: none /* Removes the border when the input is clicked */
+}
+
+button, input[type="submit"], input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
