@@ -8,6 +8,7 @@ const NavBar = () => {
       width: 100%;
       background-color: white;
       display: flex;
+      align-items: center;
     `
     return (
         <NavBarElement>

@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import styled, {css} from "styled-components";
 import {Link} from 'react-router-dom'
 import logo from '../assets/images/logo.svg'
@@ -12,6 +12,9 @@ import messages from '../assets/images/messages.svg'
 import settings from '../assets/images/settings.svg'
 
 const SideBar = () => {
+
+    const [selectedItemIndex, setSelectedItemIndex] = useState(0)
+
     const LeftSide = styled.div`
       height: 100%;
       width: 20%;
@@ -51,44 +54,62 @@ const SideBar = () => {
                 <SideBarListItem
                     text={"Overview"}
                     image={overview}
-                    selected={true}
+                    selected={selectedItemIndex === 0}
                     route={"/"}
+                    onClick={
+                        () => setSelectedItemIndex(0)
+                    }
                 />
 
                 <SideBarListItem
                     text={"Statistics"}
                     image={stats}
-                    selected={false}
+                    selected={selectedItemIndex === 1}
                     route={"/stats"}
+                    onClick={
+                        () => setSelectedItemIndex(1)
+                    }
                 />
 
                 <SideBarListItem
                     text={"Patients"}
                     image={patients}
-                    selected={false}
+                    selected={selectedItemIndex === 2}
                     route={"patients"}
+                    onClick={
+                        () => setSelectedItemIndex(2)
+                    }
 
                 />
 
                 <SideBarListItem
                     text={"Polyclinic"}
                     image={polyclinic}
-                    selected={false}
+                    selected={selectedItemIndex === 3}
                     route={"polyclinic"}
+                    onClick={
+                        () => setSelectedItemIndex(3)
+                    }
                 />
 
                 <SideBarListItem
                     text={"Doctors"}
                     image={doctors}
-                    selected={false}
+                    selected={selectedItemIndex === 4}
                     route={"medicines"}
+                    onClick={
+                        () => setSelectedItemIndex(4)
+                    }
                 />
 
                 <SideBarListItem
                     text={"Medicines"}
                     image={medicines}
-                    selected={false}
+                    selected={selectedItemIndex === 5}
                     route={"medicines"}
+                    onClick={
+                        () => setSelectedItemIndex(5)
+                    }
                 />
 
 
@@ -104,15 +125,21 @@ const SideBar = () => {
                 <SideBarListItem
                     text={"Messages"}
                     image={messages}
-                    selected={false}
+                    selected={selectedItemIndex === 6}
                     route={"messages"}
+                    onClick={
+                        () => setSelectedItemIndex(6)
+                    }
                 />
 
                 <SideBarListItem
                     text={"Settings"}
                     image={settings}
-                    selected={false}
+                    selected={selectedItemIndex === 7}
                     route={"settings"}
+                    onClick={
+                        () => setSelectedItemIndex(7)
+                    }
                 />
 
             </SideBarList>
@@ -123,7 +150,7 @@ const SideBar = () => {
     )
 }
 
-const SideBarListItem = ({text, image, selected, route}) => {
+const SideBarListItem = ({text, image, selected, route, onClick}) => {
     const ListItem = styled.li`
       display: inline-flex;
       width: 100%;
@@ -133,7 +160,6 @@ const SideBarListItem = ({text, image, selected, route}) => {
       &:hover {
         cursor: pointer;
         background: rgb(234, 242, 255);
-
       }
 
       ${props =>
@@ -145,8 +171,8 @@ const SideBarListItem = ({text, image, selected, route}) => {
       }
     `
     return (
-        <Link to={route}>
-            <ListItem>
+        <Link to={route} onClick={onClick}>
+            <ListItem >
                 <img src={image} alt={""} style={{
                     paddingRight: "1rem"
                 }}/>

@@ -10,16 +10,14 @@ const Chart = () => {
       box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
       padding: 2rem 0;
       margin: 1rem;
+      flex: 1 1 auto;
     `
     return <ChartElement>
-        {/*<LineChart width={400} height={400} data={data}>*/}
-        {/*    <Line type="monotone" dataKey="uv" stroke="#8884d8" />*/}
-        {/*    <XAxis dataKey="name" />*/}
-        {/*    <YAxis />*/}
-        {/*    <Tooltip />*/}
-        {/*</LineChart>*/}
+
         <AreaChart width={1500} height={500} data={data}
-                   margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                   margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+
+        >
             <defs>
                 <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
