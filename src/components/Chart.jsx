@@ -1,9 +1,20 @@
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Area, AreaChart} from 'recharts';
 import {data} from "../data/chart";
 import styled from "styled-components";
 
 const Chart = () => {
+    const ref = useRef(null)
+
+    const [height, setHeight] = useState(0)
+    const [width, setWidth] = useState(0)
+
+    useEffect(() => {
+        setHeight(ref.current.clientHeight)
+        setWidth(ref.current.clientWidth)
+
+    }, [])
+
     const ChartElement = styled.div`
       background-color: white;
       border-radius: 1rem;
@@ -12,9 +23,9 @@ const Chart = () => {
       margin: 1rem;
       flex: 1 1 auto;
     `
-    return <ChartElement>
+    return <ChartElement ref={ref}>
 
-        <AreaChart width={1500} height={500} data={data}
+        <AreaChart width={width} height={height * 0.8} data={data}
                    margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
 
         >
