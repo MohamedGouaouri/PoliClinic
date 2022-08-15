@@ -6,6 +6,7 @@ import InfoBox from "../components/InfoBox";
 import Chart from "../components/Chart";
 import {AppContext} from "../context/AppContext";
 import BasicTable from "../components/PatientsTable";
+import {PatientProvider} from "../context/PatientContext";
 
 
 const Patients = styled.div`
@@ -26,12 +27,14 @@ const PatientsPage = () => {
       margin: 2rem 1rem 0 1rem
     `
     return (
-        <Patients>
-            <NavBar/>
-            <PatientsTableStyled>
-                <BasicTable />
-            </PatientsTableStyled>
-        </Patients>
+        <PatientProvider>
+            <Patients>
+                <NavBar/>
+                <PatientsTableStyled>
+                    <BasicTable />
+                </PatientsTableStyled>
+            </Patients>
+        </PatientProvider>
     )
 }
 
