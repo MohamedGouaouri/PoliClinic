@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import StatsPage from "./pages/StatsPage";
 import LogRocket from "logrocket";
 import setupLogRocketReact from "logrocket-react";
+import PatientsPage from "./pages/PatientsPage";
 
 function App() {
     LogRocket.init("ayi6g2/learn");
@@ -16,6 +17,7 @@ function App() {
             <Routes >
                 <Route path={"/"} exact={true} element={<HomePage />}/>
                 <Route path={"/stats"} exact={true} element={<StatsPage />}/>
+                <Route path={"/patients"} exact={true} element={<PatientsPage />} />
             </Routes>
         </Router>
     </div>

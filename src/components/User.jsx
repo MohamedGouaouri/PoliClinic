@@ -6,7 +6,7 @@ import getWindowDimensions from "../hooks/window";
 
 const User = ({username, role}) => {
 
-    const [open, setOpen] = useState(true)
+    const [open, setOpen] = useState(false)
 
 
     const UserBoxElementWrapper = styled.div`

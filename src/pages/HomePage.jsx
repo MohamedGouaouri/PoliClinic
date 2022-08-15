@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
 import NavBar from "../components/NavBar";
 import Greeting from "../components/Greeting";
 import InfoBox from "../components/InfoBox";
 import Chart from "../components/Chart";
+import {AppContext} from "../context/AppContext";
 
 
 const Home = styled.div`
@@ -15,10 +16,12 @@ const Home = styled.div`
 `
 
 const HomePage = () => {
+    const data = useContext(AppContext)
+    console.log("DATA", data)
     return (
         <Home>
-            <NavBar />
-            <Greeting user={"Amir"}/>
+            <NavBar/>
+            <Greeting user={data['user'] && data['user']['firstName']}/>
             <div style={{
                 margin: "1rem 0",
                 display: "flex",
@@ -27,25 +30,26 @@ const HomePage = () => {
             }}>
                 <InfoBox
                     label={"Total Patients"}
-                    value={"24,908"}
+                    value={data && data["patients"]}
                     color={"rgba(177,226,173,0.51)"}
                 />
 
                 <InfoBox
                     label={"Total Doctors"}
-                    value={"24,908"}
+                    value={data && data["doctors"]}
                     color={"rgba(238,176,129,0.51)"}
                 />
 
                 <InfoBox
                     label={"Total Staff"}
-                    value={"24,908"}
+                    value={data && data["staff"]}
                     color={"rgba(87,149,228,0.51)"}
                 />
 
             </div>
 
             <Chart />
+
         </Home>
     )
 }

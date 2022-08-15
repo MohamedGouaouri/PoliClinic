@@ -1,9 +1,24 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from "styled-components";
 import {FaPlus} from "react-icons/fa";
+import {Alert} from "@mui/material";
 
 
 const Greeting = ({user}) => {
+
+    const [alertOpened, setAlertOpened] = useState(false)
+    if (alertOpened) {
+        setTimeout(() => {
+            setAlertOpened(false)
+        }, 2000)
+    }
+
+    const Wrapper = styled.div`
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    `
+
     const GreetingElement = styled.div`
       width: 100%;
       margin: 1rem 0;
@@ -30,31 +45,44 @@ const Greeting = ({user}) => {
       padding: 1rem 2rem;
       margin-right: 1rem;
     `
-    return <GreetingElement>
-        <div style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            marginLeft: "1rem"
-
-        }}>
-            <Heading>
-                Poli Overview
-            </Heading>
-            <Welcome >
-                Welcome back, {user}
-            </Welcome>
-        </div>
-        <Button >
-            <FaPlus style={{
-                marginRight: "1rem"
+    return (
+        <Wrapper >
+            {
+                alertOpened && <Alert severity="success" style={{
+                    width: "50%",
+                    textAlign: "center",
+                    margin: "1rem 0 0 0"
+                }} onClose={() => {setAlertOpened(false)}} >This is a success alert — check it out!</Alert>
             }
-            }/>
-            <div>
-                Register Patient
-            </div>
-        </Button>
-    </GreetingElement>
+            <GreetingElement>
+                <div style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    marginLeft: "1rem"
+
+                }}>
+                    <Heading>
+                        Poli Overview
+                    </Heading>
+                    <Welcome >
+                        Welcome back, {user}
+                    </Welcome>
+                </div>
+                <Button onClick={() => {setAlertOpened(true)}}>
+                    <FaPlus style={{
+                        marginRight: "1rem"
+                    }
+                    }/>
+                    <div>
+                        Register Patient
+                    </div>
+                </Button>
+            </GreetingElement>
+        </Wrapper>
+
+    )
+
 }
 
 export default Greeting
