@@ -17,7 +17,6 @@ const Patients = styled.div`
 `
 
 const PatientsPage = () => {
-    const data = useContext(AppContext)
     const PatientsTableStyled = styled.div`
       //display: flex;
       //flex-direction: column;
